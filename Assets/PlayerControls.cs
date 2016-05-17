@@ -9,7 +9,7 @@ public class PlayerControls : MonoBehaviour {
 	// set maximum falling speed
 	public float maxFallingSpeed = 50;
 	// the thing
-	Rigidbody rb;
+	Rigidbody2D rb;
 
 	// is the character knocked?
 	private bool knocked;
@@ -17,7 +17,7 @@ public class PlayerControls : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rb = GetComponent<Rigidbody> ();
+		rb = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
@@ -38,10 +38,10 @@ public class PlayerControls : MonoBehaviour {
 			rb.velocity = rb.velocity.normalized * maxFallingSpeed;
 	}
 
-	void OnCollisionEnter (Collision other) {
+	void OnTriggerEnter2D (Collider2D other) {
 
 		// if the player object fell onto a platform doe
-		if (other.gameObject.layer == LayerMask.NameToLayer("Platform") && rb.velocity.y < 0) {
+		if (other.gameObject.layer == LayerMask.NameToLayer("Platform") && rb.velocity.y <= 0.0f) {
 			print (canJump);
 			canJump = true;
 		}

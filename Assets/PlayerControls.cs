@@ -9,6 +9,7 @@ public class PlayerControls : MonoBehaviour {
 	// set maximum falling speed
 	public float maxFallingSpeed = 50;
 
+	// the box collider object thing
 	public BoxCollider2D colliderBox;
 
 	// the thing
@@ -16,8 +17,11 @@ public class PlayerControls : MonoBehaviour {
 
 	// is the character knocked?
 	private bool knocked;
+	// can the character jump
 	private bool canJump = false;
+	// can it pass through the platforms
 	private bool canPassThrough = false;
+	// the y position of the current platform the character is standing on
 	private float platformY;
 	// Use this for initialization
 	void Start () {
